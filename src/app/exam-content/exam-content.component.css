@@ -20,3 +20,8 @@
 .btn{
     margin:5px;
 }
+.optionDiv{
+    border:1px solid rgba(30, 189, 51, 0.925);
+    padding: 0.2%;
+    margin: 0.2%;
+}

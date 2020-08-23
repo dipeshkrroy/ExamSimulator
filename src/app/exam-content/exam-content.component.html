@@ -18,7 +18,7 @@
 <div class="examContent">
 <p><span>Q{{qn}}. </span><span>{{qns}}</span></p>
 <img/>
-<div  *ngFor="let option of options">
+<div  class="optionDiv" *ngFor="let option of options">
     <input (click)="onOptClick($event)" type={{optionType}} value={{option}} (change)="onItemChange($event.target.value)" ng-checked="false">{{option}}
 </div>
 
