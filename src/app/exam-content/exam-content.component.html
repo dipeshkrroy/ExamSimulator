@@ -1,1 +1,40 @@
-<p>exam-content works!</p>
+
+<div class="examheader">
+    <h3>Online quiz: Java</h3>
+</div>
+<div class="container1">
+    <div class="row">
+      <div class="col-sm">
+        <h5>Question {{qn}} of 10</h5>
+      </div>
+      <div class="col-sm">
+        <h5></h5>
+      </div>
+      <div class="col-sm">
+        <h5>Time Remaining: {{minute}}:{{second}}</h5>
+      </div>
+    </div>
+</div>
+<div class="examContent">
+<p><span>Q{{qn}}. </span><span>{{qns}}</span></p>
+<img/>
+<div  *ngFor="let option of options">
+    <input (click)="onOptClick($event)" type={{optionType}} value={{option}} (change)="onItemChange($event.target.value)" ng-checked="false">{{option}}
+</div>
+
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+       
+      </div>
+      <div class="col-sm">
+        <button type="button" class="btn btn-success" (click)="onPrevClick($event)" *ngIf="this.isButtonVisible">Prev.</button>
+        <button type="button" class="btn btn-success" (click)="onNextClick($event)" disabled="{{btnDisabledNext}}">{{isNext}}</button>
+        
+      </div>
+      <div class="col-sm">
+        
+      </div>
+    </div>
+</div>

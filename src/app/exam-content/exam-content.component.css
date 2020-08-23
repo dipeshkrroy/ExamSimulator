@@ -1,0 +1,22 @@
+.container1{
+    border: 1px solid blue;
+    margin: 0.5%;
+    padding:0.6%;
+}
+.col-sm{
+    color:burlywood;
+    margin-left: 10%;
+}
+.examheader{
+    color: #80aaed;
+    margin:0.5%;
+    padding:0.5%;
+}
+.examContent{
+    border:1px solid pink;
+    margin:5%;
+    padding:1%;
+}
+.btn{
+    margin:5px;
+}
