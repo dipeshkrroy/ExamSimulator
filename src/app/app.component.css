@@ -1,14 +1,5 @@
 .container1{
-    background-color: aliceblue;
-    margin: 1%;
-    padding:1%;
-}
-.navbar{
-    background-color:antiquewhite;
-    margin: 1%;
-    padding:1%;
-}
-.content{
-    margin: 1%;
-    padding:1%;
+    margin: 0.5%;
+    padding:0%;
+    background:rgb(190, 224, 243);
 }

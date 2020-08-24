@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 import { on } from 'process';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-exam-content',
@@ -11,7 +12,7 @@ export class ExamContentComponent implements OnInit {
   qn: number = 1;
   isChecked: boolean = false;
   btnDisabledNext: boolean;
-  private isButtonVisible = false;
+  isButtonVisible = false;
   qns: string;
   options=[];
   optionType: string;
@@ -26,16 +27,21 @@ export class ExamContentComponent implements OnInit {
     {qns:"What is Class", options:[" OOP6"," programming6"," Scripting6"," HTML6"],optType:"Checkbox",selection:[]}
   ];
   secondsCounter = interval(1000);
-  second: number = 60;
-  minute:number =60;
-  
-  constructor() { }
+  second: number = 59;
+  minute:number =0;
+  defaultChoice = " OOP1"
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    let resp = this.http.get("https://reqres.in/api/users");
+    resp.subscribe((data)=>{
+      console.log(data)
+    });
     this.startTimer();
     this.qns=this.Question[0].qns;
     this.options=this.Question[0].options;
     this.optionType=this.Question[0].optType;
+    this.defaultChoice = this.Question[0].selection[0];
   }
   onNextClick(event){
     if(this.qn == this.Question.length ){
@@ -45,6 +51,7 @@ export class ExamContentComponent implements OnInit {
       this.qn+=1;
       this.qns=this.Question[this.qn-1].qns;
       this.options=this.Question[this.qn-1].options;
+      this.defaultChoice = this.Question[this.qn-1].selection[0];
       this.optionType=this.Question[this.qn-1].optType;
       this.isButtonVisible = true;
       this.isNext="Skip";
@@ -58,9 +65,11 @@ export class ExamContentComponent implements OnInit {
   onPrevClick(event){
     console.log(this.btnDisabledNext);
     if(this.qn >= 2){
+      console.log(this.Question);
       this.qn-=1;
       this.qns=this.Question[this.qn-1].qns;
       this.options=this.Question[this.qn-1].options;
+      this.defaultChoice = this.Question[this.qn-1].selection[0];
       this.optionType=this.Question[this.qn-1].optType;
     }else{
       if(this.qn == 1){
@@ -73,22 +82,27 @@ export class ExamContentComponent implements OnInit {
   }
   onOptClick($event){
     this.isNext="Next";
+    console.log($event.target.value)
+    this.Question[this.qn-1].selection[0]=$event.target.value;
     
   }
   onItemChange(value){
-    let x:number=0;
-    this.Question[this.qn-1].selection[x]=value;
-    x+=1;
-    console.log(" Value is : ", x );
-    
+    console.log(value)   ; 
  }
   startTimer(){
     this.secondsCounter.subscribe(n =>{
-      this.second -=1;
-      if(this.second == 0){
-        this.second=60;
-        this.minute -=1;
-      }
+      this.second -=1;      
+        if(this.second == 0){
+          this.second=59;
+          if(this.minute>0){
+            this.minute -=1;
+          }else{
+            alert("Time Over");
+             window.location.assign("http://localhost:4200/ExamInstruction");
+          
+          }   
+        }
+      
     }); 
   }
   onSubmit(){

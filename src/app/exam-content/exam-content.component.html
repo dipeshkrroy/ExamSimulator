@@ -2,26 +2,31 @@
 <div class="examheader">
     <h3>Online quiz: Java</h3>
 </div>
-<div class="container1">
-    <div class="row">
-      <div class="col-sm">
-        <h5>Question {{qn}} of 10</h5>
-      </div>
-      <div class="col-sm">
-        <h5></h5>
-      </div>
-      <div class="col-sm">
-        <h5>Time Remaining: {{minute}}:{{second}}</h5>
-      </div>
+<div class="card container1">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm">
+              <h5>Question {{qn}} of 10</h5>
+            </div>
+            <div class="col-sm">
+              <h5></h5>
+            </div>
+            <div class="col-sm">
+              <h5>Time Remaining: {{minute}}:{{second}}</h5>
+            </div>
+          </div>
     </div>
+    
 </div>
-<div class="examContent">
-<p><span>Q{{qn}}. </span><span>{{qns}}</span></p>
+<div class=" card examContent">
+<div class="card-body">
+    <h4><span >Q{{qn}}. </span><span>{{qns}}</span></h4>
 <img/>
-<div  class="optionDiv" *ngFor="let option of options">
-    <input (click)="onOptClick($event)" type={{optionType}} value={{option}} (change)="onItemChange($event.target.value)" ng-checked="false">{{option}}
+<div  class="optionDiv" *ngFor="let option of options" (click)="onOptClick($event)">
+    <input class="input" (click)="onOptClick($event)" type={{optionType}} name="option1" value="{{option}}" [checked]="option === defaultChoice" (Change)="onItemChange($event.target.value)">{{option}}
+    <br>
 </div>
-
+</div>
 </div>
 <div class="container">
     <div class="row">
