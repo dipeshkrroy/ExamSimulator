@@ -27,15 +27,72 @@ export class ExamContentComponent implements OnInit {
     {qns:"What is Class", options:[" OOP6"," programming6"," Scripting6"," HTML6"],optType:"Checkbox",selection:[]}
   ];
   secondsCounter = interval(1000);
-  second: number = 59;
-  minute:number =0;
+  second: number = 10;
+  minute:number = 1;
   defaultChoice = " OOP1"
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
     let resp = this.http.get("https://reqres.in/api/users");
     resp.subscribe((data)=>{
-      console.log(data)
+      
+      data={
+        "user": {
+            "userId": "bhukumar",
+            "firstName": null,
+            "lastName": "Kumar",
+            "createdBy": null,
+            "createdDate": null,
+            "modifiedBy": null,
+            "modifiedDate": null
+        },
+        "certification": {
+            "certificationId": 1,
+            "certificationCode": "1Z0-071",
+            "certificationTitle": "Oracle Database SQL",
+            "certificationByCompany": "Oracle",
+            "createdBy": null,
+            "createdDate": null,
+            "modifiedBy": null,
+            "modifiedDate": null
+        },
+        "question": {
+            "questionId": 101,
+            "question": "Demo to Prashanth",
+            "answers": [
+                {
+                    "answerId": 1,
+                    "answer": "demo answer",
+                    "correct": true,
+                    "question": 101
+                },
+                {
+                    "answerId": 2,
+                    "answer": "demo answer1",
+                    "correct": false,
+                    "question": 101
+                },
+                {
+                    "answerId": 3,
+                    "answer": "demo answer2",
+                    "correct": true,
+                    "question": 101
+                }
+            ]
+        },
+        "answer": {
+            "answerId": 3,
+            "answer": "demo answer2",
+            "correct": true,
+            "question": 101
+        },
+        "userResponse": true,
+        "createdBy": null,
+        "createdDate": null,
+        "modifiedBy": null,
+        "modifiedDate": null
+    };
+    console.log(data['question'])
     });
     this.startTimer();
     this.qns=this.Question[0].qns;
@@ -107,6 +164,11 @@ export class ExamContentComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.Question);
+  }
+  getSelection(option){
+    if(this.Question[this.qn-1].selection[0]===option){
+      return true;
+    }
   }
 
 }

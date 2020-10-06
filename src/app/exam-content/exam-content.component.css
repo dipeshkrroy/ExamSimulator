@@ -1,32 +1,9 @@
 
-.col-sm{
-    
-    margin-left: 10%;
-}
-.examheader{
-    color: #80aaed;
-    margin:0.5%;
-    padding:0.5%;
-}
-.examContent{
-    background:rgb(211, 230, 241);
-    margin:2%;
-    padding:1%;
-}
-.btn{
-    margin:5px;
-}
-.optionDiv{
-    border:1px solid rgba(30, 189, 51, 0.925);
-    padding: 0.5%;
-    margin: 0.5%;
-}
 .optionDiv:hover{
-    background-color:rgb(138, 135, 135);
-    color:rgb(248, 244, 244);
-    border-radius: 5%;
+    color: white;
+    border: solid 1px black;
 }
 .input:checked{
     background-color: aquamarine;
-    color: white;
+    color:green;
 }
