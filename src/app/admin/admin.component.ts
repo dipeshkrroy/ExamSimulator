@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.nums[0]= 1
     console.log(this.questionModel)
-    //this.qnsLst = true;
+    this.qnsLst = true;
   }
   AddOptions(num){
     this.nums[num]=num+1;
