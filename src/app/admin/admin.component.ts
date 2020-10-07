@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Question} from '../shared/question'
 
 @Component({
@@ -11,10 +12,11 @@ export class AdminComponent implements OnInit {
  qnsLst = false;
  userLst = false;
  certLst = false;
+ closeResult = '';
  
  
  questionModel = new Question("Enter Your question here",["option"]);
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.nums[0]= 1
@@ -45,6 +47,22 @@ export class AdminComponent implements OnInit {
     this.qnsLst = false;
     this.userLst = false;
     this.certLst = true;
+  }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
   
 
