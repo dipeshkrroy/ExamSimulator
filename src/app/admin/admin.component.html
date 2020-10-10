@@ -1,6 +1,7 @@
 
   <div class="row">
     <div class="col-lg-8">
+      <!--Modal/Popup area-->
       <ng-template #content let-modal>
         <div class="modal-header text-white bg-primary">
           <h4 class="modal-title " id="modal-basic-title">Add New Question</h4>
@@ -9,6 +10,7 @@
           </button>
         </div>
         <div class="modal-body">
+          <!--Add Content  -->
           <form #userFomr = "ngForm">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -36,7 +38,7 @@
           <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Save</button>
         </div>
       </ng-template>
-      <!--2-->
+      <!--2User Modal -->
       <ng-template #content1 let-modal>
         <div class="modal-header text-white bg-secondary">
           <h4 class="modal-title " id="modal-basic-title">Add New User</h4>
@@ -72,7 +74,7 @@
           <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Save</button>
         </div>
       </ng-template>
-      <!--3-->
+      <!--3 Add cdrtification-->
       <ng-template #content2 let-modal>
         <div class="modal-header text-white bg-success">
           <h4 class="modal-title " id="modal-basic-title">Add New Certification</h4>
@@ -108,7 +110,7 @@
           <button type="button" class="btn btn-outline-success" (click)="modal.close('Save click')">Save</button>
         </div>
       </ng-template>
-      <!---->
+      <!-- Question lst display-->
       <div *ngIf="qnsLst" class="card mb-2">
         <div class="card-header bg-primary text-white"><h2>Questions List</h2>
           <button (click)="open(content)" type="button" class="btn btn-outline-light"><i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></button><i class="fa fa-refresh fa-1x m-2" aria-hidden="true"></i>
@@ -151,6 +153,7 @@
         </div>
         <div class="card-footer"></div>
       </div>
+      <!--Userlist display-->
       <div *ngIf="userLst" class="card mb-2">
         <div class="card-header bg-secondary"><h2>Users List</h2>
           <button (click)="open(content1)" type="button" class="btn btn-outline-light"><i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></button>
@@ -189,6 +192,7 @@
         </div>
         <div class="card-footer"></div>
       </div>
+      <!--Certification list display-->
       <div *ngIf="certLst" class="card mb-2">
         <div class="card-header bg-success"><h2>Certification List</h2>
           <button (click)="open(content2)" type="button" class="btn btn-outline-light"><i class="fa fa-plus-square fa-1x" aria-hidden="true"></i></button>
@@ -229,20 +233,26 @@
       </div>
       
     </div>
+    <!--Admin right section-->
     <div class="col-lg-4">
+      <!--Card - question-->
       <div class="card text-white bg-primary mb-2" style="width: 18rem;">
         <div class="card-header"><h5>Questions</h5></div>
         <div class="card-body">
           <h5> <i class="fa fa-quora fa-2x m-2" aria-hidden="true"></i>1024</h5>
           <button (click)="onQuestionClick()" type="button" class="btn btn-outline-light">View Questtion</button>
         </div>
-      </div><div class="card text-white bg-secondary mb-2" style="width: 18rem;">
+      </div>
+      <!--Card - usrs-->
+      <div class="card text-white bg-secondary mb-2" style="width: 18rem;">
         <div class="card-header"><h5>Users</h5></div>
         <div class="card-body">
           <h5> <i class="fa fa-users fa-2x m-2" aria-hidden="true"></i>1024</h5>
           <button (click)="onUsersClick()" type="button" class="btn btn-outline-light" >View Users</button>
         </div>
-      </div><div class="card text-white bg-success mb-2" style="width: 18rem;">
+      </div>
+      <!--Card - certification-->
+      <div class="card text-white bg-success mb-2" style="width: 18rem;">
         <div class="card-header"><h5>Certification</h5></div>
         <div class="card-body">
           <h5> <i class="fa fa-graduation-cap fa-2x m-2" aria-hidden="true"></i>1024</h5>
